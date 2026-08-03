@@ -4,11 +4,11 @@
    ============================================ */
 
 :root {
-  --navy: #8b3a5c;           /* deep rose */
-  --navy-deep: #6b2a46;      /* darker rose */
-  --gold: #e8a0bf;           /* soft pink */
-  --gold-light: #f5c6d6;     /* light blush */
-  --cream: #fff5f8;          /* soft pink cream */
+  --navy: #8b3a5c;
+  --navy-deep: #6b2a46;
+  --gold: #e8a0bf;
+  --gold-light: #f5c6d6;
+  --cream: #fff5f8;
   --white: #ffffff;
   --text: #4a2c3a;
   --text-muted: #7a5a6a;
@@ -63,13 +63,11 @@ img {
   display: block;
 }
 
-/* ---------- Layout ---------- */
 .layout {
   display: flex;
   min-height: 100vh;
 }
 
-/* ---------- Sidebar ---------- */
 .sidebar {
   position: fixed;
   top: 0;
@@ -176,7 +174,6 @@ img {
   line-height: 1.5;
 }
 
-/* ---------- Mobile menu toggle ---------- */
 .menu-toggle {
   display: none;
   position: fixed;
@@ -194,14 +191,12 @@ img {
   box-shadow: var(--shadow);
 }
 
-/* ---------- Main content ---------- */
 .main-content {
   margin-left: var(--sidebar-width);
   flex: 1;
   min-width: 0;
 }
 
-/* ---------- Hero (Home) ---------- */
 .page-hero {
   position: relative;
   background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 45%, #c45a82 100%);
@@ -222,19 +217,22 @@ img {
 .hero-content {
   position: relative;
   max-width: 720px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  text-align: center;
 }
 
 .hero-logo {
-  width: 120px;
+  width: 220px;
+  max-width: 80%;
   height: auto;
-  margin-bottom: 24px;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 16px;
-  padding: 10px;
+  margin: 0 auto 28px;
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.3));
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 20px;
+  padding: 16px;
 }
 
 .eyebrow {
@@ -259,7 +257,6 @@ img {
   font-weight: 300;
 }
 
-/* ---------- Page header (inner pages) ---------- */
 .page-header {
   background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 60%, #b85078 100%);
   color: var(--white);
@@ -296,7 +293,6 @@ img {
   font-weight: 300;
 }
 
-/* ---------- Sections ---------- */
 .section {
   padding: 48px 48px 24px;
   max-width: 960px;
@@ -339,7 +335,6 @@ img {
   color: var(--navy);
 }
 
-/* ---------- Card grid ---------- */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -387,7 +382,6 @@ img {
   color: var(--text-muted);
 }
 
-/* ---------- Facebook-style feed ---------- */
 .feed-intro {
   font-size: 0.95rem;
   color: var(--text-muted);
@@ -404,7 +398,7 @@ img {
 .fb-feed {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
 }
 
 .fb-post {
@@ -452,6 +446,34 @@ img {
   color: var(--text-muted);
 }
 
+.fb-post-image {
+  margin-top: 14px;
+  width: 100%;
+  background: linear-gradient(135deg, var(--soft-pink) 0%, var(--petal) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  overflow: hidden;
+}
+
+.fb-post-image img {
+  width: 100%;
+  height: auto;
+  max-height: 360px;
+  object-fit: cover;
+}
+
+.fb-post-image.logo-only img {
+  width: 160px;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  padding: 32px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+}
+
 .fb-post-body {
   padding: 14px 20px 16px;
 }
@@ -481,7 +503,6 @@ img {
   font-style: italic;
 }
 
-/* ---------- CTA ---------- */
 .cta-section {
   padding-bottom: 48px;
 }
@@ -543,7 +564,6 @@ img {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
-/* ---------- Officers ---------- */
 .notice-card {
   background: var(--soft-pink);
   border: 1px solid var(--petal);
@@ -629,7 +649,6 @@ img {
   color: var(--text-muted);
 }
 
-/* ---------- Presidents list ---------- */
 .presidents-list {
   display: flex;
   flex-direction: column;
@@ -692,7 +711,6 @@ img {
   color: var(--text-muted);
 }
 
-/* ---------- Footer ---------- */
 .site-footer {
   margin-top: 32px;
   padding: 28px 48px 40px;
@@ -707,7 +725,6 @@ img {
   opacity: 0.8;
 }
 
-/* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .sidebar {
     transform: translateX(-100%);
@@ -738,7 +755,7 @@ img {
   }
 
   .hero-logo {
-    width: 96px;
+    width: 160px;
   }
 
   .section {
@@ -762,5 +779,9 @@ img {
 @media (max-width: 480px) {
   .officers-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hero-logo {
+    width: 140px;
   }
 }
