@@ -395,6 +395,23 @@ img {
   text-underline-offset: 2px;
 }
 
+/* Facebook Page Plugin embed */
+.fb-embed-wrap {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 320px;
+}
+
+.fb-embed-wrap .fb-page {
+  max-width: 100%;
+}
+
 .fb-feed {
   display: flex;
   flex-direction: column;
@@ -501,6 +518,13 @@ img {
   font-size: 0.85rem;
   color: var(--text-muted);
   font-style: italic;
+}
+
+.feed-note a {
+  color: var(--navy);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .cta-section {
@@ -772,6 +796,10 @@ img {
 
   .pres-year {
     width: 100%;
+    padding: 12px;
+  }
+
+  .fb-embed-wrap {
     padding: 12px;
   }
 }
