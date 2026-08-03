@@ -1,22 +1,25 @@
 /* ============================================
    Inner Wheel Club of Dagupan East
-   Clean, elegant side-menu website
+   Soft flowery pink theme
    ============================================ */
 
 :root {
-  --navy: #1a2a4a;
-  --navy-deep: #0f1a2e;
-  --gold: #c9a227;
-  --gold-light: #e8d48b;
-  --cream: #faf7f0;
+  --navy: #8b3a5c;           /* deep rose */
+  --navy-deep: #6b2a46;      /* darker rose */
+  --gold: #e8a0bf;           /* soft pink */
+  --gold-light: #f5c6d6;     /* light blush */
+  --cream: #fff5f8;          /* soft pink cream */
   --white: #ffffff;
-  --text: #2c2c2c;
-  --text-muted: #5a5a5a;
-  --border: #e5e0d5;
+  --text: #4a2c3a;
+  --text-muted: #7a5a6a;
+  --border: #f0d0dc;
   --sidebar-width: 280px;
   --radius: 12px;
-  --shadow: 0 4px 20px rgba(26, 42, 74, 0.08);
+  --shadow: 0 4px 20px rgba(139, 58, 92, 0.1);
   --transition: 0.25s ease;
+  --accent-pink: #d46a8e;
+  --soft-pink: #fce4ec;
+  --petal: #f8bbd0;
 }
 
 *,
@@ -34,6 +37,10 @@ html {
 body {
   font-family: "Source Sans 3", system-ui, sans-serif;
   background: var(--cream);
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(248, 187, 208, 0.25) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(232, 160, 191, 0.2) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(252, 228, 236, 0.4) 0%, transparent 60%);
   color: var(--text);
   line-height: 1.6;
   min-height: 100vh;
@@ -69,12 +76,13 @@ img {
   left: 0;
   width: var(--sidebar-width);
   height: 100vh;
-  background: linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 100%);
+  background: linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 55%, #a84d72 100%);
   color: var(--white);
   display: flex;
   flex-direction: column;
   z-index: 100;
   transition: transform var(--transition);
+  box-shadow: 4px 0 24px rgba(107, 42, 70, 0.2);
 }
 
 .sidebar-header {
@@ -82,13 +90,13 @@ img {
   align-items: center;
   gap: 14px;
   padding: 28px 24px 24px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .logo-mark {
   width: 48px;
   height: 48px;
-  background: var(--gold);
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
   color: var(--navy-deep);
   border-radius: 50%;
   display: flex;
@@ -98,6 +106,7 @@ img {
   font-weight: 700;
   font-size: 1.15rem;
   flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
 
 .logo-text {
@@ -114,7 +123,7 @@ img {
 
 .club-sub {
   font-size: 0.75rem;
-  opacity: 0.75;
+  opacity: 0.8;
   margin-top: 2px;
 }
 
@@ -134,17 +143,17 @@ img {
   border-radius: 10px;
   font-size: 0.95rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.85);
   transition: background var(--transition), color var(--transition);
 }
 
 .nav-item:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.12);
   color: var(--white);
 }
 
 .nav-item.active {
-  background: rgba(201, 162, 39, 0.2);
+  background: rgba(245, 198, 214, 0.25);
   color: var(--gold-light);
 }
 
@@ -152,14 +161,14 @@ img {
   font-size: 1.1rem;
   width: 22px;
   text-align: center;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 .sidebar-footer {
   padding: 20px 24px 28px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   font-size: 0.75rem;
-  opacity: 0.6;
+  opacity: 0.7;
   line-height: 1.5;
 }
 
@@ -191,7 +200,7 @@ img {
 /* ---------- Hero (Home) ---------- */
 .page-hero {
   position: relative;
-  background: linear-gradient(135deg, var(--navy-deep) 0%, #2a4068 60%, #3d5a80 100%);
+  background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 45%, #c45a82 100%);
   color: var(--white);
   padding: 80px 48px 72px;
   overflow: hidden;
@@ -200,7 +209,9 @@ img {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 80% 20%, rgba(201, 162, 39, 0.15) 0%, transparent 50%);
+  background:
+    radial-gradient(circle at 85% 15%, rgba(245, 198, 214, 0.35) 0%, transparent 45%),
+    radial-gradient(circle at 15% 85%, rgba(232, 160, 191, 0.25) 0%, transparent 40%);
   pointer-events: none;
 }
 
@@ -226,16 +237,29 @@ img {
 
 .hero-tagline {
   font-size: 1.15rem;
-  opacity: 0.9;
+  opacity: 0.92;
   max-width: 540px;
   font-weight: 300;
 }
 
 /* ---------- Page header (inner pages) ---------- */
 .page-header {
-  background: var(--navy);
+  background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 60%, #b85078 100%);
   color: var(--white);
   padding: 56px 48px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header::after {
+  content: "❀";
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 4rem;
+  opacity: 0.15;
+  pointer-events: none;
 }
 
 .page-header .eyebrow {
@@ -250,7 +274,7 @@ img {
 
 .page-subtitle {
   font-size: 1.05rem;
-  opacity: 0.85;
+  opacity: 0.88;
   max-width: 560px;
   font-weight: 300;
 }
@@ -273,7 +297,7 @@ img {
 .accent-line {
   width: 56px;
   height: 3px;
-  background: var(--gold);
+  background: linear-gradient(90deg, var(--accent-pink), var(--gold));
   border-radius: 2px;
 }
 
@@ -312,11 +336,23 @@ img {
   box-shadow: var(--shadow);
   border: 1px solid var(--border);
   transition: transform var(--transition), box-shadow var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.info-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-pink), var(--gold-light));
 }
 
 .info-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(26, 42, 74, 0.12);
+  box-shadow: 0 8px 28px rgba(139, 58, 92, 0.15);
 }
 
 .card-icon {
@@ -373,7 +409,7 @@ img {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--navy) 0%, #3d5a80 100%);
+  background: linear-gradient(135deg, var(--navy) 0%, #c45a82 100%);
   color: var(--gold-light);
   display: flex;
   align-items: center;
@@ -434,11 +470,31 @@ img {
 }
 
 .cta-box {
-  background: linear-gradient(135deg, var(--navy) 0%, #2a4068 100%);
+  background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 50%, #c45a82 100%);
   color: var(--white);
   border-radius: var(--radius);
   padding: 40px 36px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-box::before {
+  content: "✿";
+  position: absolute;
+  left: 24px;
+  top: 20px;
+  font-size: 2.5rem;
+  opacity: 0.2;
+}
+
+.cta-box::after {
+  content: "❀";
+  position: absolute;
+  right: 28px;
+  bottom: 16px;
+  font-size: 2.2rem;
+  opacity: 0.2;
 }
 
 .cta-box h2 {
@@ -447,7 +503,7 @@ img {
 }
 
 .cta-box p {
-  opacity: 0.9;
+  opacity: 0.92;
   max-width: 520px;
   margin: 0 auto 24px;
   font-weight: 300;
@@ -455,28 +511,30 @@ img {
 
 .btn-primary {
   display: inline-block;
-  background: var(--gold);
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
   color: var(--navy-deep);
   font-weight: 600;
   padding: 12px 28px;
   border-radius: 8px;
-  transition: background var(--transition), transform var(--transition);
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .btn-primary:hover {
-  background: var(--gold-light);
+  background: linear-gradient(135deg, #fff 0%, var(--gold-light) 100%);
   transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 /* ---------- Officers ---------- */
 .notice-card {
-  background: #fff9e6;
-  border: 1px solid #f0e0a0;
+  background: var(--soft-pink);
+  border: 1px solid var(--petal);
   border-radius: var(--radius);
   padding: 16px 20px;
   margin-bottom: 28px;
   font-size: 0.9rem;
-  color: #5a4a1a;
+  color: #6b3a4e;
 }
 
 .officers-grid {
@@ -493,18 +551,25 @@ img {
   border: 1px solid var(--border);
   text-align: center;
   position: relative;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.officer-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(139, 58, 92, 0.14);
 }
 
 .officer-card.featured {
-  border-color: var(--gold);
-  box-shadow: 0 6px 24px rgba(201, 162, 39, 0.18);
+  border-color: var(--accent-pink);
+  box-shadow: 0 6px 24px rgba(212, 106, 142, 0.22);
+  background: linear-gradient(180deg, #fff 0%, #fff8fb 100%);
 }
 
 .officer-badge {
   position: absolute;
   top: 14px;
   right: 14px;
-  background: var(--navy);
+  background: linear-gradient(135deg, var(--navy) 0%, #c45a82 100%);
   color: var(--gold-light);
   font-size: 0.7rem;
   font-weight: 600;
@@ -519,7 +584,7 @@ img {
   height: 72px;
   margin: 8px auto 16px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--navy) 0%, #3d5a80 100%);
+  background: linear-gradient(135deg, var(--navy) 0%, #d46a8e 100%);
   color: var(--gold-light);
   display: flex;
   align-items: center;
@@ -527,6 +592,7 @@ img {
   font-family: "Playfair Display", serif;
   font-weight: 600;
   font-size: 1.1rem;
+  box-shadow: 0 4px 12px rgba(139, 58, 92, 0.25);
 }
 
 .officer-card h3 {
@@ -536,7 +602,7 @@ img {
 
 .officer-role {
   font-size: 0.85rem;
-  color: var(--gold);
+  color: var(--accent-pink);
   font-weight: 600;
   margin-bottom: 12px;
 }
@@ -564,13 +630,13 @@ img {
 }
 
 .president-card.current {
-  border-color: var(--gold);
+  border-color: var(--accent-pink);
 }
 
 .pres-year {
   flex-shrink: 0;
   width: 110px;
-  background: var(--navy);
+  background: linear-gradient(180deg, var(--navy) 0%, #a84d72 100%);
   color: var(--gold-light);
   display: flex;
   align-items: center;
@@ -583,8 +649,8 @@ img {
 }
 
 .president-card.current .pres-year {
-  background: linear-gradient(180deg, var(--gold) 0%, #a8861a 100%);
-  color: var(--navy-deep);
+  background: linear-gradient(180deg, var(--accent-pink) 0%, #c45a82 100%);
+  color: #fff;
 }
 
 .pres-info {
@@ -599,7 +665,7 @@ img {
 
 .pres-meta {
   font-size: 0.85rem;
-  color: var(--gold);
+  color: var(--accent-pink);
   font-weight: 600;
   margin-bottom: 8px;
 }
@@ -647,6 +713,11 @@ img {
   .page-hero,
   .page-header {
     padding: 72px 24px 48px;
+  }
+
+  .page-header::after {
+    right: 16px;
+    font-size: 2.8rem;
   }
 
   .section {
