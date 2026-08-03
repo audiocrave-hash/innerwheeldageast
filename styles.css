@@ -274,7 +274,7 @@ img {
 .hero-club-logo {
   display: block;
   width: 100%;
-  max-width: 280px;
+  max-width: 140px; /* 50% of previous 280px */
   height: auto;
   margin: 0 auto 18px;
   object-fit: contain;
@@ -737,7 +737,7 @@ img {
 
   .hero-club-logo {
     width: 100%;
-    max-width: 100%;
+    max-width: 120px; /* slightly smaller on mobile, still ~50% scale */
     margin-bottom: 14px;
   }
 
