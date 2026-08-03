@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fetch public Page posts from Facebook Graph API and write data/posts.json."""
+"""Fetch Page posts from Facebook Graph API and write data/posts.json."""
 
 import json
 import os
@@ -7,12 +7,14 @@ import sys
 import urllib.error
 import urllib.parse
 import urllib.request
+from datetime import datetime, timezone
 from pathlib import Path
 
 API_VERSION = os.environ.get("FB_API_VERSION", "v21.0")
-PAGE_ID = os.environ.get("FB_PAGE_ID", "").strip()
+# Club page ID (can still be overridden via secret FB_PAGE_ID)
+PAGE_ID = os.environ.get("FB_PAGE_ID", "61591944000616").strip() or "61591944000616"
 TOKEN = os.environ.get("FB_PAGE_ACCESS_TOKEN", "").strip()
-LIMIT = int(os.environ.get("FB_POSTS_LIMIT", "10"))
+LIMIT = int(os.environ.get("FB_POSTS_LIMIT", "12"))
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "data" / "posts.json"
@@ -73,12 +75,13 @@ def normalize(post: dict) -> dict:
 
 
 def main() -> None:
-    if not PAGE_ID or not TOKEN:
+    if not TOKEN:
         die(
-            "Set FB_PAGE_ID and FB_PAGE_ACCESS_TOKEN environment variables "
-            "(GitHub repo secrets)."
+            "FB_PAGE_ACCESS_TOKEN is not set. "
+            "Add it as a GitHub Actions secret, then re-run this workflow."
         )
 
+    print(f"Fetching posts for page {PAGE_ID} (API {API_VERSION})...")
     data = graph_get(
         f"{PAGE_ID}/posts",
         {
@@ -92,6 +95,7 @@ def main() -> None:
     payload = {
         "source": "facebook_graph_api",
         "page_id": PAGE_ID,
+        "fetched_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "count": len(posts),
         "posts": posts,
     }

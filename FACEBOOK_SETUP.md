@@ -1,93 +1,54 @@
-# Facebook Graph API setup (Recent Activities)
+# Facebook Graph API setup
 
-This site uses a **Page access token** and a GitHub Action to pull posts (text + photos) into `data/posts.json`. The Activities page reads that file.
+The site is ready. You only need a **Page access token** once Facebook lets you log in on this device.
 
-You (or a club Page admin) must complete these steps once.
+## When you can log in to Facebook
 
-## 1. Create a Meta app
-
-1. Go to [Meta for Developers](https://developers.facebook.com/)
-2. **My Apps → Create App**
-3. Choose type suitable for business / manage a Page (e.g. Business)
-4. Note your **App ID** and **App Secret** (App settings → Basic)
-
-## 2. Add permissions (Development mode is fine for testing)
-
-In the app, request / use these permissions when generating a token:
-
-- `pages_show_list`
-- `pages_read_engagement`
-- `pages_read_user_content` (if required for your app)
-
-For a **live** public app, these usually need **App Review**. While the app is in **Development**, tokens work for users who have a role on the app (admin/developer/tester) and who can manage the Page.
-
-## 3. Get a Page access token
+### 1. Get a Page access token
 
 1. Open [Graph API Explorer](https://developers.facebook.com/tools/explorer/)
-2. Select your app
-3. Generate a **User** token with the permissions above
-4. Call `GET /me/accounts`
-5. Copy the **access_token** for **Inner Wheel Club of Dagupan East** (Page token)
-6. Page ID is typically `61591944000616` (confirm in the same response as `id`)
+2. Select your Meta app (create one at [developers.facebook.com](https://developers.facebook.com/) if needed)
+3. Permissions to add:
+   - `pages_show_list`
+   - `pages_read_engagement`
+   - `pages_read_user_content` (if offered)
+4. Generate token → **Get Token** as a user who **manages the club Page**
+5. Call:
+   ```
+   GET /me/accounts
+   ```
+6. In the response, find **Inner Wheel Club of Dagupan East** and copy:
+   - `access_token` → this is the **Page access token**
+   - `id` → should be `61591944000616`
 
-### Long-lived token (recommended)
+Use a **long-lived** Page token if possible (exchange a short-lived user token first — see Meta docs).
 
-Short-lived tokens expire in hours. Exchange for a long-lived user token, then get a long-lived Page token:
+### 2. Add GitHub secrets
 
-```text
-GET https://graph.facebook.com/v21.0/oauth/access_token
-  ?grant_type=fb_exchange_token
-  &client_id={app-id}
-  &client_secret={app-secret}
-  &fb_exchange_token={short-lived-user-token}
-```
+Repo: https://github.com/audiocrave-hash/innerwheeldageast  
+**Settings → Secrets and variables → Actions → New repository secret**
 
-Then:
+| Secret name | Required? | Value |
+|-------------|-----------|--------|
+| `FB_PAGE_ACCESS_TOKEN` | **Yes** | Page access token from step 1 |
+| `FB_PAGE_ID` | No | Defaults to `61591944000616` if omitted |
 
-```text
-GET https://graph.facebook.com/v21.0/me/accounts?access_token={long-lived-user-token}
-```
+### 3. Run the fetch
 
-Use the Page `access_token` from that response. Page tokens from a long-lived user token often do not expire while the user remains admin and the app is valid—still re-check if the Action starts failing.
+1. **Actions → Fetch Facebook Posts → Run workflow**
+2. On success, `data/posts.json` updates and the site redeploys
+3. Open: https://audiocrave-hash.github.io/innerwheeldageast/activities.html
 
-## 4. Add GitHub secrets
+Daily auto-fetch runs at 06:00 UTC.
 
-Repo → **Settings → Secrets and variables → Actions → New repository secret**:
-
-| Secret name | Value |
-|-------------|--------|
-| `FB_PAGE_ID` | e.g. `61591944000616` |
-| `FB_PAGE_ACCESS_TOKEN` | the **Page** access token |
-
-Never commit the token to the repo.
-
-## 5. Run the fetch workflow
-
-1. Repo → **Actions → Fetch Facebook Posts → Run workflow**
-2. On success, `data/posts.json` is updated and committed
-3. **Deploy to GitHub Pages** runs on push and publishes the site
-
-The workflow also runs **daily** on a schedule.
-
-## 6. Test the API manually (optional)
+### Quick API test (optional)
 
 ```bash
-curl "https://graph.facebook.com/v21.0/61591944000616/posts?fields=id,message,created_time,permalink_url,full_picture&limit=5&access_token=YOUR_PAGE_TOKEN"
+curl "https://graph.facebook.com/v21.0/61591944000616/posts?fields=id,message,created_time,full_picture&limit=3&access_token=YOUR_PAGE_TOKEN"
 ```
-
-You should see JSON with `data` posts.
-
-## Troubleshooting
-
-| Issue | What to try |
-|-------|-------------|
-| `(#10) pages_read_engagement` | Token missing permission; or use a Page token from an admin, not an App token |
-| Empty `data` | Page has no published posts visible to the token, or wrong Page ID |
-| Token expired | Generate a new long-lived Page token and update the secret |
-| Workflow fails on push | Ensure Actions has permission to write (workflow uses `contents: write`) |
 
 ## Security
 
-- Only store the token in **GitHub Actions secrets**
-- Limit who can manage the repo and Meta app
-- If the token leaks, remove it in Meta and rotate the secret immediately
+- Never commit the token into files or chat
+- Only store it as a GitHub Actions secret
+- If it leaks, revoke it in Meta and create a new one

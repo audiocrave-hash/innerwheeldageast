@@ -21,8 +21,20 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Check token secret
+        env:
+          FB_PAGE_ACCESS_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
+        run: |
+          if [ -z "$FB_PAGE_ACCESS_TOKEN" ]; then
+            echo "::error::Secret FB_PAGE_ACCESS_TOKEN is not set."
+            echo "Add it under Settings → Secrets and variables → Actions, then re-run."
+            exit 1
+          fi
+          echo "Token secret is present."
+
       - name: Fetch posts from Graph API
         env:
+          # Optional override; defaults to club page 61591944000616 in the script
           FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
           FB_PAGE_ACCESS_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
           FB_POSTS_LIMIT: "12"

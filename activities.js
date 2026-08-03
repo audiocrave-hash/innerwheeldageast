@@ -37,11 +37,16 @@
     return parts.map((p) => "<p>" + escapeHtml(p) + "</p>").join("");
   }
 
-  function renderPosts(posts) {
-    if (!posts || !posts.length) {
+  function renderPosts(data) {
+    const posts = data.posts || [];
+
+    if (!posts.length) {
       feedEl.innerHTML = "";
       showStatus(
-        "<p><strong>No posts loaded yet.</strong> Connect a Facebook Page access token (see setup steps), then run the <em>Fetch Facebook Posts</em> workflow. Until then, visit the <a href=\"https://www.facebook.com/people/Inner-Wheel-Club-of-Dagupan-East-District-379/61591944000616/\" target=\"_blank\" rel=\"noopener\">Facebook page</a>.</p>",
+        "<p><strong>Waiting for Facebook connection.</strong></p>" +
+          "<p>When you can log in to Facebook, add the GitHub secret <code>FB_PAGE_ACCESS_TOKEN</code> (Page access token), then run <em>Actions → Fetch Facebook Posts</em>.</p>" +
+          "<p>Page ID defaults to <code>61591944000616</code>. Until then, visit the " +
+          "<a href=\"https://www.facebook.com/people/Inner-Wheel-Club-of-Dagupan-East-District-379/61591944000616/\" target=\"_blank\" rel=\"noopener\">official Facebook page</a>.</p>",
         true
       );
       return;
@@ -87,11 +92,12 @@
       if (!r.ok) throw new Error("Could not load posts.json");
       return r.json();
     })
-    .then((data) => renderPosts(data.posts || []))
+    .then((data) => renderPosts(data))
     .catch(() => {
       feedEl.innerHTML = "";
       showStatus(
-        "<p><strong>Could not load activity data.</strong> Check that <code>data/posts.json</code> is deployed, or open the <a href=\"https://www.facebook.com/people/Inner-Wheel-Club-of-Dagupan-East-District-379/61591944000616/\" target=\"_blank\" rel=\"noopener\">Facebook page</a>.</p>",
+        "<p><strong>Could not load activity data.</strong> Open the " +
+          "<a href=\"https://www.facebook.com/people/Inner-Wheel-Club-of-Dagupan-East-District-379/61591944000616/\" target=\"_blank\" rel=\"noopener\">Facebook page</a> meanwhile.</p>",
         true
       );
     });
