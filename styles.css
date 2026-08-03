@@ -431,6 +431,51 @@ img {
   color: var(--text-muted);
 }
 
+/* ---------- Upcoming activities / event posters ---------- */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 8px;
+}
+
+.event-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition);
+  text-align: center;
+}
+
+.event-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(139, 58, 92, 0.15);
+}
+
+.event-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: var(--soft-pink);
+}
+
+.event-meta {
+  padding: 16px 18px 20px;
+}
+
+.event-meta h3 {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.event-meta p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
 .feed-intro {
   font-size: 0.95rem;
   color: var(--text-muted);
