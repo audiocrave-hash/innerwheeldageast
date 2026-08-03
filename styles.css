@@ -197,6 +197,45 @@ img {
   min-width: 0;
 }
 
+/* ---------- Home: centered layout ---------- */
+.home-page .page-hero {
+  text-align: center;
+}
+
+.home-page .section {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.home-page .section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-page .accent-line {
+  margin: 0 auto;
+}
+
+.home-page .content-card {
+  text-align: center;
+}
+
+.home-page .content-card p {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-page .info-card {
+  text-align: center;
+}
+
+.home-page .site-footer {
+  text-align: center;
+}
+
 .page-hero {
   position: relative;
   background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 45%, #c45a82 100%);
@@ -222,17 +261,6 @@ img {
   flex-direction: column;
   align-items: center;
   text-align: center;
-}
-
-.hero-logo {
-  width: 220px;
-  max-width: 80%;
-  height: auto;
-  margin: 0 auto 28px;
-  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.3));
-  background: rgba(255, 255, 255, 0.97);
-  border-radius: 20px;
-  padding: 16px;
 }
 
 .eyebrow {
@@ -395,7 +423,6 @@ img {
   text-underline-offset: 2px;
 }
 
-/* Facebook Page Plugin embed */
 .fb-embed-wrap {
   background: var(--white);
   border-radius: var(--radius);
@@ -778,10 +805,6 @@ img {
     font-size: 2.8rem;
   }
 
-  .hero-logo {
-    width: 160px;
-  }
-
   .section {
     padding: 36px 24px 16px;
   }
@@ -807,9 +830,5 @@ img {
 @media (max-width: 480px) {
   .officers-grid {
     grid-template-columns: 1fr;
-  }
-
-  .hero-logo {
-    width: 140px;
   }
 }
