@@ -10,11 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous"
-    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v21.0"
-    nonce="iwcde"></script>
-
   <div class="layout">
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
@@ -56,7 +51,7 @@
       <header class="page-header">
         <p class="eyebrow">Fellowship · Service · Updates</p>
         <h1>Recent Activities</h1>
-        <p class="page-subtitle">Live updates from the official Inner Wheel Club of Dagupan East Facebook page.</p>
+        <p class="page-subtitle">Posts pulled from the official club Facebook page via the Graph API.</p>
       </header>
 
       <section class="section">
@@ -66,35 +61,17 @@
         </div>
 
         <p class="feed-intro">
-          Posts below are loaded live from
+          Live content from
           <a href="https://www.facebook.com/people/Inner-Wheel-Club-of-Dagupan-East-District-379/61591944000616/" target="_blank" rel="noopener">Inner Wheel Club of Dagupan East District 379</a>.
-          New posts appear here automatically.
+          Updated automatically once the Facebook token is connected.
         </p>
 
-        <div class="fb-embed-wrap">
-          <div class="fb-page"
-            data-href="https://www.facebook.com/people/Inner-Wheel-Club-of-Dagupan-East-District-379/61591944000616/"
-            data-tabs="timeline"
-            data-width="500"
-            data-height="700"
-            data-small-header="false"
-            data-adapt-container-width="true"
-            data-hide-cover="false"
-            data-show-facepile="true">
-            <blockquote cite="https://www.facebook.com/people/Inner-Wheel-Club-of-Dagupan-East-District-379/61591944000616/" class="fb-xfbml-parse-ignore">
-              <a href="https://www.facebook.com/people/Inner-Wheel-Club-of-Dagupan-East-District-379/61591944000616/">Inner Wheel Club of Dagupan East District 379</a>
-            </blockquote>
-          </div>
-        </div>
+        <div id="activities-status" class="notice-card" style="display:none;"></div>
+        <div id="activities-feed" class="fb-feed" aria-live="polite"></div>
 
-        <p class="feed-note">
-          If the feed does not load, your browser or network may be blocking Facebook, or you may need to be logged into Facebook.
-          You can always visit the
-          <a href="https://www.facebook.com/people/Inner-Wheel-Club-of-Dagupan-East-District-379/61591944000616/" target="_blank" rel="noopener">official page</a> directly.
-        </p>
-
-        <p style="margin-top: 24px;">
-          <a href="https://www.facebook.com/people/Inner-Wheel-Club-of-Dagupan-East-District-379/61591944000616/" target="_blank" rel="noopener" class="btn-primary">Open Facebook Page</a>
+        <p class="feed-note" style="margin-top: 24px;">
+          Prefer Facebook directly?
+          <a href="https://www.facebook.com/people/Inner-Wheel-Club-of-Dagupan-East-District-379/61591944000616/" target="_blank" rel="noopener">Open the official page</a>.
         </p>
       </section>
 
@@ -105,5 +82,6 @@
   </div>
 
   <script src="script.js"></script>
+  <script src="activities.js"></script>
 </body>
 </html>

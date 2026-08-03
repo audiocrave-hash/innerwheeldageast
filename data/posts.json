@@ -1,0 +1,7 @@
+{
+  "source": "placeholder",
+  "page_id": "61591944000616",
+  "count": 0,
+  "posts": [],
+  "note": "Run the fetch-facebook workflow after setting FB_PAGE_ID and FB_PAGE_ACCESS_TOKEN secrets."
+}
