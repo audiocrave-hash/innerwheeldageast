@@ -197,43 +197,64 @@ img {
   min-width: 0;
 }
 
-/* ---------- Home: centered layout ---------- */
-.home-page .page-hero {
+/* ---------- Site-wide centered content ---------- */
+.page-hero,
+.page-header {
   text-align: center;
 }
 
-.home-page .section {
+.page-header .page-subtitle {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
 }
 
-.home-page .section-header {
+.section-header {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.home-page .accent-line {
+.accent-line {
   margin: 0 auto;
 }
 
-.home-page .content-card {
+.content-card {
   text-align: center;
 }
 
-.home-page .content-card p {
+.content-card p {
   max-width: 640px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.home-page .info-card {
+.info-card {
   text-align: center;
 }
 
-.home-page .site-footer {
+.site-footer {
   text-align: center;
+}
+
+.feed-intro,
+.feed-note,
+.notice-card {
+  text-align: center;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.officers-table {
+  margin: 0 auto;
+  text-align: left;
+  max-width: 520px;
 }
 
 .page-hero {
@@ -443,6 +464,7 @@ img {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  text-align: left;
 }
 
 .fb-post {
@@ -668,8 +690,8 @@ img {
 }
 
 .officer-avatar {
-  width: 72px;
-  height: 72px;
+  width: 88px;
+  height: 88px;
   margin: 8px auto 16px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--navy) 0%, #d46a8e 100%);
@@ -681,6 +703,18 @@ img {
   font-weight: 600;
   font-size: 1.1rem;
   box-shadow: 0 4px 12px rgba(139, 58, 92, 0.25);
+  overflow: hidden;
+}
+
+.officer-avatar-photo {
+  background: var(--white);
+  padding: 0;
+}
+
+.officer-avatar-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .officer-card h3 {
@@ -704,6 +738,7 @@ img {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  text-align: left;
 }
 
 .president-card {
