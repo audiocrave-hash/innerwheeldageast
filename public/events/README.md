@@ -1,0 +1,1 @@
+Event posters for Upcoming Activities section.
