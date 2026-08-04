@@ -9,38 +9,108 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    .fb-embed-wrap {
-      display: flex;
-      justify-content: center;
-      margin: 28px auto 8px;
-      max-width: 500px;
-      min-height: 400px;
-    }
-    .fb-embed-wrap .fb-page {
-      width: 100% !important;
-    }
-    .fb-fallback {
-      text-align: center;
-      padding: 32px 20px;
-      background: var(--soft-pink, #f8e8ef);
-      border-radius: 12px;
-      border: 1px solid var(--border, #eadce3);
-      max-width: 480px;
+    .fb-feed {
+      display: grid;
+      gap: 24px;
+      max-width: 640px;
       margin: 0 auto;
     }
-    .fb-fallback a.btn-fb {
-      display: inline-block;
-      margin-top: 14px;
-      background: #1877f2;
-      color: #fff;
-      font-weight: 600;
-      padding: 12px 24px;
-      border-radius: 8px;
-      text-decoration: none;
+    .fb-post {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(139, 58, 92, 0.1);
+      border: 1px solid #eadce3;
+      overflow: hidden;
+      text-align: left;
     }
-    .fb-fallback a.btn-fb:hover {
-      background: #166fe5;
-      text-decoration: none;
+    .fb-post-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 18px 10px;
+    }
+    .fb-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3d2540, #c45a82);
+      color: #f0d4a8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .fb-meta {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.3;
+    }
+    .fb-meta strong {
+      font-size: 0.95rem;
+      color: #2c2430;
+    }
+    .fb-date {
+      font-size: 0.8rem;
+      color: #6b5c66;
+    }
+    .fb-post-image img {
+      width: 100%;
+      display: block;
+      max-height: 420px;
+      object-fit: cover;
+      background: #f8e8ef;
+    }
+    .fb-post-image.logo-only {
+      padding: 32px;
+      background: #fdf8fa;
+      text-align: center;
+    }
+    .fb-post-image.logo-only img {
+      max-width: 120px;
+      margin: 0 auto;
+      object-fit: contain;
+      max-height: 120px;
+    }
+    .fb-post-body {
+      padding: 14px 18px 8px;
+    }
+    .fb-post-body p {
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      color: #2c2430;
+      line-height: 1.55;
+    }
+    .fb-post-body p:last-child {
+      margin-bottom: 0;
+    }
+    .fb-post-footer {
+      padding: 10px 18px 16px;
+      font-size: 0.88rem;
+    }
+    .fb-post-footer a {
+      font-weight: 600;
+      color: #c45a82;
+    }
+    .notice-card {
+      background: #fff8f0;
+      border: 1px solid #f0dcc8;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      font-size: 0.95rem;
+      color: #2c2430;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .notice-card code {
+      background: #f0e6ea;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.88em;
     }
   </style>
 </head>
@@ -100,45 +170,8 @@
           <a href="https://www.facebook.com/people/Inner-Wheel-Club-of-Dagupan-East-District-379/61591944000616/" target="_blank" rel="noopener">Inner Wheel Club of Dagupan East District 379</a>.
         </p>
 
-        <!-- Facebook SDK -->
-        <div id="fb-root"></div>
-        <script>
-          window.fbAsyncInit = function() {
-            FB.init({
-              xfbml: true,
-              version: 'v21.0'
-            });
-          };
-          (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = 'https://connect.facebook.net/en_US/sdk.js';
-            fjs.parentNode.insertBefore(js, fjs);
-          }(document, 'script', 'facebook-jssdk'));
-        </script>
-
-        <!-- Facebook Page Plugin – using numeric Page ID -->
-        <div class="fb-embed-wrap">
-          <div class="fb-page"
-            data-href="https://www.facebook.com/61591944000616"
-            data-tabs="timeline"
-            data-width="500"
-            data-height="700"
-            data-small-header="false"
-            data-adapt-container-width="true"
-            data-hide-cover="false"
-            data-show-facepile="true">
-          </div>
-        </div>
-
-        <!-- Always-visible fallback link -->
-        <div class="fb-fallback" style="margin-top: 20px;">
-          <p style="margin: 0 0 4px; color: var(--text, #2c2430);">If the feed does not appear above, open the page directly:</p>
-          <a class="btn-fb" href="https://www.facebook.com/people/Inner-Wheel-Club-of-Dagupan-East-District-379/61591944000616/" target="_blank" rel="noopener">
-            View on Facebook
-          </a>
-        </div>
+        <div id="activities-status" class="notice-card" style="display:none;"></div>
+        <div id="activities-feed" class="fb-feed" aria-live="polite"></div>
 
         <p class="feed-note" style="margin-top: 28px;">
           Prefer Facebook directly?
@@ -153,5 +186,6 @@
   </div>
 
   <script src="script.js"></script>
+  <script src="activities.js"></script>
 </body>
 </html>
