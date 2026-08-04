@@ -8,6 +8,41 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .fb-embed-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 28px auto 8px;
+      max-width: 500px;
+      min-height: 400px;
+    }
+    .fb-embed-wrap .fb-page {
+      width: 100% !important;
+    }
+    .fb-fallback {
+      text-align: center;
+      padding: 32px 20px;
+      background: var(--soft-pink, #f8e8ef);
+      border-radius: 12px;
+      border: 1px solid var(--border, #eadce3);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .fb-fallback a.btn-fb {
+      display: inline-block;
+      margin-top: 14px;
+      background: #1877f2;
+      color: #fff;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    .fb-fallback a.btn-fb:hover {
+      background: #166fe5;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
   <div class="layout">
@@ -67,14 +102,26 @@
 
         <!-- Facebook SDK -->
         <div id="fb-root"></div>
-        <script async defer crossorigin="anonymous"
-          src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v21.0">
+        <script>
+          window.fbAsyncInit = function() {
+            FB.init({
+              xfbml: true,
+              version: 'v21.0'
+            });
+          };
+          (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk.js';
+            fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));
         </script>
 
-        <!-- Official Facebook Page Plugin -->
-        <div class="fb-embed-wrap" style="display: flex; justify-content: center; margin: 24px auto; max-width: 500px;">
+        <!-- Facebook Page Plugin – using numeric Page ID -->
+        <div class="fb-embed-wrap">
           <div class="fb-page"
-            data-href="https://www.facebook.com/people/Inner-Wheel-Club-of-Dagupan-East-District-379/61591944000616/"
+            data-href="https://www.facebook.com/61591944000616"
             data-tabs="timeline"
             data-width="500"
             data-height="700"
@@ -82,13 +129,18 @@
             data-adapt-container-width="true"
             data-hide-cover="false"
             data-show-facepile="true">
-            <blockquote cite="https://www.facebook.com/people/Inner-Wheel-Club-of-Dagupan-East-District-379/61591944000616/" class="fb-xfbml-parse-ignore">
-              <a href="https://www.facebook.com/people/Inner-Wheel-Club-of-Dagupan-East-District-379/61591944000616/">Inner Wheel Club of Dagupan East District 379</a>
-            </blockquote>
           </div>
         </div>
 
-        <p class="feed-note" style="margin-top: 24px;">
+        <!-- Always-visible fallback link -->
+        <div class="fb-fallback" style="margin-top: 20px;">
+          <p style="margin: 0 0 4px; color: var(--text, #2c2430);">If the feed does not appear above, open the page directly:</p>
+          <a class="btn-fb" href="https://www.facebook.com/people/Inner-Wheel-Club-of-Dagupan-East-District-379/61591944000616/" target="_blank" rel="noopener">
+            View on Facebook
+          </a>
+        </div>
+
+        <p class="feed-note" style="margin-top: 28px;">
           Prefer Facebook directly?
           <a href="https://www.facebook.com/people/Inner-Wheel-Club-of-Dagupan-East-District-379/61591944000616/" target="_blank" rel="noopener">Open the official page</a>.
         </p>
