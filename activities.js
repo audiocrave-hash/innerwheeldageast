@@ -25,10 +25,10 @@
 
   function escapeHtml(str) {
     return String(str)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;");
+      .replace(/&/g, "&")
+      .replace(/</g, "<")
+      .replace(/>/g, ">")
+      .replace(/"/g, """);
   }
 
   function messageToHtml(message) {
@@ -43,9 +43,10 @@
     if (!posts.length) {
       feedEl.innerHTML = "";
       showStatus(
-        "<p><strong>Waiting for Facebook connection.</strong></p>" +
-          "<p>When you can log in to Facebook, add the GitHub secret <code>FB_PAGE_ACCESS_TOKEN</code> (Page access token), then run <em>Actions → Fetch Facebook Posts</em>.</p>" +
-          "<p>Page ID defaults to <code>61591944000616</code>. Until then, visit the " +
+        "<p><strong>Connect Facebook to show live posts.</strong></p>" +
+          "<p>Add the GitHub secret <code>FB_PAGE_ACCESS_TOKEN</code> (a Page access token), then go to <em>Actions → Fetch Facebook Posts → Run workflow</em>.</p>" +
+          "<p>Page ID is already set to <code>61591944000616</code>.</p>" +
+          "<p>Meanwhile, visit the " +
           "<a href=\"https://www.facebook.com/people/Inner-Wheel-Club-of-Dagupan-East-District-379/61591944000616/\" target=\"_blank\" rel=\"noopener\">official Facebook page</a>.</p>",
         true
       );
@@ -58,10 +59,10 @@
         const images = post.images || [];
         const imgHtml = images.length
           ? `<div class="fb-post-image"><img src="${escapeHtml(images[0])}" alt="Activity photo" loading="lazy" referrerpolicy="no-referrer" /></div>`
-          : `<div class="fb-post-image logo-only"><img src="public/iwcde-logo.png" alt="Inner Wheel Club of Dagupan East" /></div>`;
+          : `<div class="fb-post-image logo-only"><img src="public/Iwc-trans-logo.png" alt="Inner Wheel Club of Dagupan East" /></div>`;
 
         const link = post.permalink_url
-          ? `<a href="${escapeHtml(post.permalink_url)}" target="_blank" rel="noopener">View on Facebook</a>`
+          ? `<a href="${escapeHtml(post.permalink_url)}" target="_blank" rel="noopener">View on Facebook →</a>`
           : "";
 
         return `
@@ -69,7 +70,7 @@
             <div class="fb-post-header">
               <div class="fb-avatar">IW</div>
               <div class="fb-meta">
-                <strong>Inner Wheel Club of Dagupan East District 379</strong>
+                <strong>Inner Wheel Club of Dagupan East</strong>
                 <span class="fb-date">${escapeHtml(formatDate(post.created_time))}</span>
               </div>
             </div>
