@@ -1,7 +1,30 @@
 {
-  "source": "awaiting_token",
+  "source": "sample_seed",
   "page_id": "61591944000616",
-  "count": 0,
-  "posts": [],
-  "note": "Add GitHub secret FB_PAGE_ACCESS_TOKEN (Page access token), then run Actions → Fetch Facebook Posts. FB_PAGE_ID is optional (defaults to 61591944000616)."
+  "fetched_at": "2026-08-04T06:12:00Z",
+  "count": 3,
+  "note": "Sample posts shown until FB_PAGE_ACCESS_TOKEN is added and the Fetch Facebook Posts workflow is run.",
+  "posts": [
+    {
+      "id": "sample-1",
+      "message": "District Leadership Training and Seminar 2026\n\nThe Inner Wheel Club of Dagupan East participated in the District Leadership Training and Seminar (DLTS), reaffirming our commitment to meaningful service through the Inner Wheel Philippines National Thrusts for IWY 2026–2027.\n\nAs a club, we have embraced these three National Thrusts as our guide for this Inner Wheel year:\n💗 Health – Cervical Cancer Awareness\n💚 Education – Let Special Children Grow and Flourish\n💜 Livelihood – Embroidery and Crocheting\n\nTogether, we are committed to creating a lasting impact in our communities through projects that promote health, empower families, and provide sustainable opportunities.\n\nTogether, We Grow and Flourish. 🌸💛",
+      "created_time": "2026-07-16T04:32:00+0000",
+      "permalink_url": "https://www.facebook.com/61591944000616",
+      "images": []
+    },
+    {
+      "id": "sample-2",
+      "message": "Club Officers for IWY 2026–2027\n\nWe are proud to present the officers who will lead the Inner Wheel Club of Dagupan East this Inner Wheel Year under the themes “Grow & Flourish” and “Reach & Inspire for a better world.”\n\nPresident: Mary Rose Yuchongtian\nVice President: Rhazzle Coquia\nSecretary: Christalle Claire Enrile\n\nTogether in friendship and service!",
+      "created_time": "2026-07-01T08:00:00+0000",
+      "permalink_url": "https://www.facebook.com/61591944000616",
+      "images": []
+    },
+    {
+      "id": "sample-3",
+      "message": "Upcoming activities this August:\n\n🦷 Dental Mission – August 8, 2026\n🥚 Isang Itlog, Isang Araw – August 10, 2026\n🌱 Start Them Young – August 10, 2026\n🏖️ Coastal Cleanup Drive – August 11, 2026\n\nJoin us in service! Details on our Facebook page.",
+      "created_time": "2026-08-01T02:00:00+0000",
+      "permalink_url": "https://www.facebook.com/61591944000616",
+      "images": []
+    }
+  ]
 }
